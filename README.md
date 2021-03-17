@@ -68,6 +68,16 @@ export default function App() {
 
 Here we have a submit function which reacts when the login button is clicked.
 showPassword and setShowPassword allows you to activate or deactivate the visibility of the password.
+
 email and setEmail allows you to enter and modify the email variable when typing it.
+
 password and setPassword are used to enter and modify the password variable when typed.
+
 the variables errors and setErrors are mandatory. They allow you to display errors when validating the email and password
+
+## Configuration - Props
+
+| Property        |   Type   | Default | Description                                                 |
+| --------------- | :------: | :-----: | ----------------------------------------------------------- |
+| showPassword    | boolean  |  false  | Activate to see the password                                |
+| setShowPassword | function |  void   | Called for allows you to turn password visibility on or off |
