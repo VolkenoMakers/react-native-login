@@ -1,20 +1,15 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
 import {
   StyleSheet,
   Text,
   View,
-  SafeAreaView,
-  ScrollView,
   Dimensions,
   TouchableOpacity,
 } from "react-native";
-import Form from "./shared/Form";
 import Yup from "./shared/validator";
-import { Feather, Entypo, Ionicons } from "@expo/vector-icons";
 import Colors from "./constants/Colors";
-import { Alert } from "react-native";
 import { RenderButton, RenderInput } from "./shared/renderInput";
+import Icon from "react-native-vector-icons/Entypo";
 
 export default function Login({
   setErrors,
@@ -49,8 +44,8 @@ export default function Login({
     email: Yup.string().email().required().label("Adresse Mail"),
     password: Yup.string().required().label("Mot de passe"),
   });
-  const submit = async () => {
-    OnSubmit;
+  const submit = () => {
+    OnSubmit();
   };
   const [loading, setLoading] = React.useState(false);
   /* const [showPassword, setShowPassword] = React.useState(false);
@@ -59,11 +54,9 @@ export default function Login({
   const [errors, setErrors] = React.useState({}); */
 
   let onChange = (text) => {
-    console.log("onChange", text);
     setEmail(text);
   };
   let onChangePassword = (text) => {
-    console.log("onChangePassword", text);
     setPassword(text);
   };
   return (
@@ -104,11 +97,11 @@ export default function Login({
           rightIcon={
             !showPassword ? (
               <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                <Entypo name="eye" size={24} color={colorIconPassword} />
+                <Icon name="eye" size={24} color={colorIconPassword} />
               </TouchableOpacity>
             ) : (
               <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                <Entypo
+                <Icon
                   name="eye-with-line"
                   size={24}
                   color={colorIconPassword}
@@ -129,6 +122,7 @@ export default function Login({
           style={{
             alignSelf: "flex-end",
             marginRight: 10,
+            marginTop: 20,
           }}
           onPress={pressForgotPassword}
         >

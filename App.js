@@ -2,9 +2,9 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Login from "./Login";
-import { Feather, Entypo, Ionicons } from "@expo/vector-icons";
 import Colors from "./constants/Colors";
 import { Alert } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 
 export default function App() {
   const [loading, setLoading] = React.useState(false);
@@ -15,13 +15,12 @@ export default function App() {
 
   const submit = async () => {
     Alert.alert("Félicitation", "Connexion réussie");
-    console.log("submit");
   };
 
   return (
     <View style={styles.container}>
       <Login
-        OnSubmit={submit()}
+        OnSubmit={submit}
         pressForgotPassword={() => {
           Alert.alert("change passWord");
         }}
@@ -55,14 +54,10 @@ export default function App() {
         connexionTitleStyle={{ color: "blue" }}
         connexionButtonStyle={{ backgroundColor: "red" }}
         leftIconPassword={
-          <Ionicons
-            name="ios-lock-open-outline"
-            size={20}
-            color={Colors.bgApp2}
-          />
+          <Icon name="ios-lock-open-outline" size={20} color={Colors.bgApp2} />
         }
         leftIconEmail={
-          <Ionicons name="mail-outline" size={20} color={Colors.color2} />
+          <Icon name="mail-outline" size={20} color={Colors.color2} />
         }
         textRedirectRegisterStyle={{ color: "red" }}
         styles={{}}

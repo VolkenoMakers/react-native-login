@@ -1,10 +1,8 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Input, Button, CheckBox } from "react-native-elements";
-
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import { Input, Button } from "react-native-elements";
 import Colors from "../constants/Colors";
 import globalStyles from "../constants/globalStyles";
-import APpButton from "./AppButton";
 import _ from "lodash";
 
 Schema = {};
@@ -115,8 +113,6 @@ export const validate = async (
   submit
 ) => {
   startLoad;
-  //const data = _.pick(/* this.state, */ fields);
-
   let valide = await Schema.validate({ email, password }, { abortEarly: false })
     .then(() => {
       endLoad;
@@ -124,7 +120,6 @@ export const validate = async (
     })
     .catch((ex) => {
       const errors = {};
-      console.log("email", ex);
       ex.inner.forEach((error) => {
         errors[error.path] = error.errors[0];
       });
@@ -160,3 +155,36 @@ const style = StyleSheet.create({
     marginLeft: 10,
   },
 });
+
+export default function APpButton({
+  small = false,
+  loading,
+  styles = {},
+  titleStyle = {},
+  buttonStyle = {},
+  ...props
+}) {
+  return (
+    <Button
+      buttonStyle={{
+        backgroundColor: Colors.bgApp,
+        height: small ? 38 : 50,
+        minWidth: small ? "25%" : "100%",
+        paddingHorizontal: 25,
+        ...buttonStyle,
+      }}
+      loading={loading}
+      disabled={loading}
+      iconContainerStyle={{ marginTop: 5, marginLeft: "auto" }}
+      titleStyle={{
+        color: "white",
+        fontWeight: "bold",
+        letterSpacing: 1,
+        //fontFamily: "Montserrat-Bold",
+        fontSize: 14,
+        ...titleStyle,
+      }}
+      {...props}
+    />
+  );
+}
