@@ -76,7 +76,7 @@ export default function App() {
 }
 ```
 
-![plot](./assets/favicon.png)
+![plot](./assets/image.png)
 
 Here we have a function which reacts when the connect button is clicked.
 showPassword and setShowPassword allows you to activate or deactivate the visibility of the password.

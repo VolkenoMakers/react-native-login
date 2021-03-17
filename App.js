@@ -19,12 +19,12 @@ export default function App() {
     <View style={styles.container}>
       <Login
         OnSubmit={submit}
-        pressForgotPassword={() => {
+        /* pressForgotPassword={() => {
           Alert.alert("change passWord");
         }}
         pressRedirectRegister={() => {
           Alert.alert("redirect regidter");
-        }}
+        }} */
         showPassword={showPassword}
         setShowPassword={setShowPassword}
         email={email}
@@ -33,7 +33,7 @@ export default function App() {
         setPassword={setPassword}
         errors={errors}
         setErrors={setErrors}
-        title={"Login"}
+        /* title={"Login"}
         forgotPasswordText={"Mot de passe oublié ?"}
         forgotPasswordTextStyle={{
           color: "red",
@@ -57,7 +57,7 @@ export default function App() {
           <Icon name="mail-outline" size={20} color={Colors.color2} />
         }
         textRedirectRegisterStyle={{ color: "red" }}
-        styles={{}}
+        styles={{}} */
       />
     </View>
   );
