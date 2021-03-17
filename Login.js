@@ -26,7 +26,7 @@ export default function Login({
   connexionButtonStyle = {},
   leftIconPassword = {},
   leftIconEmail = {},
-  textRedirectRegister = "Je n'ai pas encore de compte",
+  textRedirectRegister,
   textRedirectRegisterStyle = {},
   styles = {},
   OnSubmit,

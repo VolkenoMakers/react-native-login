@@ -19,12 +19,12 @@ export default function App() {
     <View style={styles.container}>
       <Login
         OnSubmit={submit}
-        /* pressForgotPassword={() => {
+        pressForgotPassword={() => {
           Alert.alert("change passWord");
         }}
         pressRedirectRegister={() => {
           Alert.alert("redirect regidter");
-        }} */
+        }}
         showPassword={showPassword}
         setShowPassword={setShowPassword}
         email={email}
@@ -33,7 +33,7 @@ export default function App() {
         setPassword={setPassword}
         errors={errors}
         setErrors={setErrors}
-        /* title={"Login"}
+        title={"Login"}
         forgotPasswordText={"Mot de passe oublié ?"}
         forgotPasswordTextStyle={{
           color: "red",
@@ -46,18 +46,16 @@ export default function App() {
           fontSize: 36,
           textAlign: "center",
         }}
-        colorIconPassword={"blue"}
         textConnexion={"Je me connect"}
-        connexionTitleStyle={{ color: "blue" }}
-        connexionButtonStyle={{ backgroundColor: "red" }}
         leftIconPassword={
           <Icon name="ios-lock-open-outline" size={20} color={Colors.bgApp2} />
         }
         leftIconEmail={
-          <Icon name="mail-outline" size={20} color={Colors.color2} />
+          <Icon name="mail-outline" size={20} color={Colors.bgApp2} />
         }
         textRedirectRegisterStyle={{ color: "red" }}
-        styles={{}} */
+        textRedirectRegister="Je n'ai pas encore de compte"
+        styles={{}}
       />
     </View>
   );

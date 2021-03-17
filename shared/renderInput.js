@@ -168,8 +168,8 @@ export default function APpButton({
     <Button
       buttonStyle={{
         backgroundColor: Colors.bgApp,
-        height: small ? 38 : 50,
-        minWidth: small ? "25%" : "100%",
+        height: 50,
+        minWidth: "100%",
         paddingHorizontal: 25,
         ...buttonStyle,
       }}
@@ -180,7 +180,6 @@ export default function APpButton({
         color: "white",
         fontWeight: "bold",
         letterSpacing: 1,
-        //fontFamily: "Montserrat-Bold",
         fontSize: 14,
         ...titleStyle,
       }}
