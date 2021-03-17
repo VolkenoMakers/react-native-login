@@ -46,7 +46,6 @@ export default function App() {
           fontSize: 36,
           textAlign: "center",
         }}
-        colorIconEmail={"red"}
         colorIconPassword={"blue"}
         textConnexion={"Je me connect"}
         connexionTitleStyle={{ color: "blue" }}

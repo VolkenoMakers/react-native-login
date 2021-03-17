@@ -20,7 +20,6 @@ export default function Login({
   titleStyle = {},
   forgotPasswordText,
   forgotPasswordTextStyle = {},
-  colorIconEmail = Colors.bgApp,
   colorIconPassword = Colors.bgApp,
   textConnexion = "SE CONNECTER",
   connexionTitleStyle = {},

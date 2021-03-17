@@ -60,13 +60,25 @@ export default function App() {
         title={"Login"}
         forgotPasswordText={"Mot de passe oublié ?"}
         OnSubmit={submit}
+        colorIconEmail={"red"}
+        colorIconPassword={"blue"}
+        textConnexion={"Je me connect"}
+        leftIconPassword={
+          <Icon name="ios-lock-open-outline" size={20} color={Colors.bgApp2} />
+        }
+        leftIconEmail={
+          <Icon name="mail-outline" size={20} color={Colors.color2} />
+        }
+        textRedirectRegisterStyle={{ color: "red" }}
       />
     </View>
   );
 }
 ```
 
-Here we have a submit function which reacts when the login button is clicked.
+![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+
+Here we have a function which reacts when the connect button is clicked.
 showPassword and setShowPassword allows you to activate or deactivate the visibility of the password.
 
 email and setEmail allows you to enter and modify the email variable when typing it.
@@ -77,7 +89,28 @@ the variables errors and setErrors are mandatory. They allow you to display erro
 
 ## Configuration - Props
 
-| Property        |   Type   | Default | Description                                                 |
-| --------------- | :------: | :-----: | ----------------------------------------------------------- |
-| showPassword    | boolean  |  false  | Activate to see the password                                |
-| setShowPassword | function |  void   | Called for allows you to turn password visibility on or off |
+**Props require**
+
+| Property        |   Type   | Default | Description                                                                     |
+| --------------- | :------: | :-----: | ------------------------------------------------------------------------------- |
+| showPassword    | boolean  |  false  | Activate to see the password                                                    |
+| setShowPassword | function |  void   | Called for allows you to activate or deactivate the visibility of the password. |
+| email           |  string  |    -    | Enter email address                                                             |
+| setEmail        | function |  void   | Called for allows you to enter and modify the email variable when typing it.    |
+| password        |  string  |    -    | Enter email address                                                             |
+| setPassword     | function |  void   | Used to enter and modify the password variable when typed.                      |
+| errors          |  object  |  void   | Object used to store email and password validation errors                       |
+| setErrors       | function |  void   | They allow you to display errors when validating the email and password         |
+| OnSubmit        | function |  void   | Fonction qui réagit lorsque le bouton de connexion est cliqué.                  |
+
+**Other props**
+| Property | Type | Default | Description |
+| --------------- | :------: | :-----: | -------------------- |
+| title | string | "Connexion" | change connection text |
+| forgotPasswordText | function | void | Put a forgotten password text |
+| colorIconPassword | color | "#2FCA74" | eye color |
+| textConnexion | strig | "SE CONNECTER" | change text on login button |
+| setShowPassword | function | void | style for the button |
+| setShowPassword | function | void | style for the button |
+| setShowPassword | function | void | style for the button |
+| setShowPassword | function | void | style for the button |
