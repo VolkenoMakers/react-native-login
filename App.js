@@ -6,7 +6,6 @@ import { Alert } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
 export default function App() {
-  const [loading, setLoading] = React.useState(false);
   const [showPassword, setShowPassword] = React.useState(false);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");

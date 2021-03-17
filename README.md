@@ -37,11 +37,14 @@ import LoginVolkeno from "volkeno-login";
 
 ```jsx
 export default function App() {
-  const [loading, setLoading] = React.useState(false);
   const [showPassword, setShowPassword] = React.useState(false);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [errors, setErrors] = React.useState({});
+
+  const submit = async () => {
+    Alert.alert("Félicitation", "Connexion réussie");
+  };
 
   return (
     <View style={styles.container}>
@@ -56,8 +59,15 @@ export default function App() {
         setErrors={setErrors}
         title={"Login"}
         forgotPasswordText={"Mot de passe oublié ?"}
+        OnSubmit={submit}
       />
     </View>
   );
 }
 ```
+
+Here we have a submit function which reacts when the login button is clicked.
+showPassword and setShowPassword allows you to activate or deactivate the visibility of the password.
+email and setEmail allows you to enter and modify the email variable when typing it.
+password and setPassword are used to enter and modify the password variable when typed.
+the variables errors and setErrors are mandatory. They allow you to display errors when validating the email and password

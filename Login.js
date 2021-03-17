@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, Dimensions, TouchableOpacity } from "react-native";
 import Yup from "./shared/validator";
 import Colors from "./constants/Colors";
 import { RenderButton, RenderInput } from "./shared/renderInput";
@@ -19,7 +13,7 @@ export default function Login({
   setEmail,
   email,
   setShowPassword,
-  showPassword,
+  showPassword = false,
   title = "Connexion",
   labelEmail = "Adresse mail",
   labelPassword = "Mot de Passe",
@@ -48,10 +42,6 @@ export default function Login({
     OnSubmit();
   };
   const [loading, setLoading] = React.useState(false);
-  /* const [showPassword, setShowPassword] = React.useState(false);
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [errors, setErrors] = React.useState({}); */
 
   let onChange = (text) => {
     setEmail(text);
@@ -67,7 +57,18 @@ export default function Login({
           marginTop: Dimensions.get("window").height * 0.1,
         }}
       >
-        <Text style={{ ...styles.title, ...titleStyle }}>{title}</Text>
+        <Text
+          style={{
+            marginVertical: 30,
+            fontWeight: "bold",
+            color: "#454545",
+            fontSize: 36,
+            textAlign: "center",
+            ...titleStyle,
+          }}
+        >
+          {title}
+        </Text>
       </View>
       <View
         style={{
@@ -95,7 +96,8 @@ export default function Login({
           leftIcon={leftIconPassword}
           textContentType={"password"}
           rightIcon={
-            !showPassword ? (
+            setShowPassword !== undefined &&
+            (!showPassword ? (
               <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
                 <Icon name="eye" size={24} color={colorIconPassword} />
               </TouchableOpacity>
@@ -107,7 +109,7 @@ export default function Login({
                   color={colorIconPassword}
                 />
               </TouchableOpacity>
-            )
+            ))
           }
           secureTextEntry={!showPassword}
         />
@@ -168,19 +170,3 @@ export default function Login({
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    marginVertical: 30,
-    fontWeight: "bold",
-    color: "#454545",
-    fontSize: 36,
-    textAlign: "center",
-  },
-});
