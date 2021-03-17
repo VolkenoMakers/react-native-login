@@ -76,7 +76,7 @@ export default function App() {
 }
 ```
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+![plot](./assets/favicon.png)
 
 Here we have a function which reacts when the connect button is clicked.
 showPassword and setShowPassword allows you to activate or deactivate the visibility of the password.
