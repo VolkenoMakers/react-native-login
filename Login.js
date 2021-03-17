@@ -41,13 +41,16 @@ export default function Login({
   textRedirectRegister = "Je n'ai pas encore de compte",
   textRedirectRegisterStyle = {},
   styles = {},
+  OnSubmit,
+  pressForgotPassword,
+  pressRedirectRegister,
 }) {
   const Schema = Yup.object().shape({
     email: Yup.string().email().required().label("Adresse Mail"),
     password: Yup.string().required().label("Mot de passe"),
   });
   const submit = async () => {
-    Alert.alert("Félicitation", "Connexion réussie");
+    OnSubmit;
   };
   const [loading, setLoading] = React.useState(false);
   /* const [showPassword, setShowPassword] = React.useState(false);
@@ -127,6 +130,7 @@ export default function Login({
             alignSelf: "flex-end",
             marginRight: 10,
           }}
+          onPress={pressForgotPassword}
         >
           <Text style={{ color: Colors.text, ...forgotPasswordTextStyle }}>
             {forgotPasswordText}
@@ -154,6 +158,7 @@ export default function Login({
           alignSelf: "flex-end",
           flex: 1,
         }}
+        onPress={pressRedirectRegister}
       >
         <Text
           style={{

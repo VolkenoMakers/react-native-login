@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Login from "./Login";
 import { Feather, Entypo, Ionicons } from "@expo/vector-icons";
 import Colors from "./constants/Colors";
+import { Alert } from "react-native";
 
 export default function App() {
   const [loading, setLoading] = React.useState(false);
@@ -12,9 +13,21 @@ export default function App() {
   const [password, setPassword] = React.useState("");
   const [errors, setErrors] = React.useState({});
 
+  const submit = async () => {
+    Alert.alert("Félicitation", "Connexion réussie");
+    console.log("submit");
+  };
+
   return (
     <View style={styles.container}>
       <Login
+        OnSubmit={submit()}
+        pressForgotPassword={() => {
+          Alert.alert("change passWord");
+        }}
+        pressRedirectRegister={() => {
+          Alert.alert("redirect regidter");
+        }}
         showPassword={showPassword}
         setShowPassword={setShowPassword}
         email={email}
