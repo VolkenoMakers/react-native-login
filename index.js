@@ -1,67 +1,170 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Login from "./Login";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
+import Yup from "./shared/validator";
 import Colors from "./constants/Colors";
-import { Alert } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import { RenderButton, RenderInput } from "./shared/renderInput";
+import Icon from "react-native-vector-icons/Entypo";
 
-export default function App() {
+export default function Login({
+  setErrors,
+  errors,
+  setPassword,
+  password,
+  setEmail,
+  email,
+  setShowPassword,
+  showPassword,
+  title = "Connexion",
+  labelEmail = "Adresse mail",
+  labelPassword = "Mot de Passe",
+  titleStyle = {},
+  forgotPasswordText,
+  forgotPasswordTextStyle = {},
+  colorIconEmail = Colors.bgApp,
+  colorIconPassword = Colors.bgApp,
+  textConnexion = "SE CONNECTER",
+  connexionTitleStyle = {},
+  connexionButtonStyle = {},
+  leftIconPassword = {},
+  leftIconEmail = {},
+  textRedirectRegister = "Je n'ai pas encore de compte",
+  textRedirectRegisterStyle = {},
+  styles = {},
+  OnSubmit,
+  pressForgotPassword,
+  pressRedirectRegister,
+}) {
+  const Schema = Yup.object().shape({
+    email: Yup.string().email().required().label("Adresse Mail"),
+    password: Yup.string().required().label("Mot de passe"),
+  });
+  const submit = () => {
+    OnSubmit();
+  };
   const [loading, setLoading] = React.useState(false);
-  const [showPassword, setShowPassword] = React.useState(false);
+  /* const [showPassword, setShowPassword] = React.useState(false);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [errors, setErrors] = React.useState({});
+  const [errors, setErrors] = React.useState({}); */
 
-  const submit = async () => {
-    Alert.alert("Félicitation", "Connexion réussie");
+  let onChange = (text) => {
+    setEmail(text);
   };
-
+  let onChangePassword = (text) => {
+    setPassword(text);
+  };
   return (
-    <View style={styles.container}>
-      <Login
-        OnSubmit={submit}
-        pressForgotPassword={() => {
-          Alert.alert("change passWord");
+    <View style={{ flex: 1, paddingHorizontal: 20, ...styles }}>
+      <View
+        style={{
+          flex: 1,
+          marginTop: Dimensions.get("window").height * 0.1,
         }}
-        pressRedirectRegister={() => {
-          Alert.alert("redirect regidter");
+      >
+        <Text style={{ ...styles.title, ...titleStyle }}>{title}</Text>
+      </View>
+      <View
+        style={{
+          flex: 1,
         }}
-        showPassword={showPassword}
-        setShowPassword={setShowPassword}
-        email={email}
-        setEmail={setEmail}
-        password={password}
-        setPassword={setPassword}
-        errors={errors}
-        setErrors={setErrors}
-        title={"Login"}
-        forgotPasswordText={"Mot de passe oublié ?"}
-        forgotPasswordTextStyle={{
-          color: "red",
-          textAlign: "center",
+      >
+        <RenderInput
+          value={email}
+          errors={errors}
+          error={errors?.email}
+          label={labelEmail}
+          onChange={onChange}
+          leftIcon={leftIconEmail}
+          textContentType={"username"}
+          autoCapitalize={"none"}
+          keyboardType={"email-address"}
+        />
+
+        <RenderInput
+          value={password}
+          errors={errors}
+          error={errors?.password}
+          label={labelPassword}
+          onChange={onChangePassword}
+          leftIcon={leftIconPassword}
+          textContentType={"password"}
+          rightIcon={
+            !showPassword ? (
+              <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                <Icon name="eye" size={24} color={colorIconPassword} />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                <Icon
+                  name="eye-with-line"
+                  size={24}
+                  color={colorIconPassword}
+                />
+              </TouchableOpacity>
+            )
+          }
+          secureTextEntry={!showPassword}
+        />
+      </View>
+      <View
+        style={{
+          marginTop: 10,
+          flex: 1,
         }}
-        titleStyle={{
-          color: "red",
-          marginVertical: 30,
-          fontWeight: "bold",
-          fontSize: 36,
-          textAlign: "center",
+      >
+        <TouchableOpacity
+          style={{
+            alignSelf: "flex-end",
+            marginRight: 10,
+            marginTop: 20,
+          }}
+          onPress={pressForgotPassword}
+        >
+          <Text style={{ color: Colors.text, ...forgotPasswordTextStyle }}>
+            {forgotPasswordText}
+          </Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{ flex: 1 }}>
+        <RenderButton
+          title={textConnexion}
+          Schema={Schema}
+          startLoad={() => setLoading(true)}
+          endLoad={() => setLoading(false)}
+          setErrors={(error) => setErrors(error)}
+          email={email}
+          password={password}
+          submit={submit}
+          styles={{ backgroundColor: "red" }}
+          titleStyle={connexionTitleStyle}
+          buttonStyle={connexionButtonStyle}
+        />
+      </View>
+
+      <TouchableOpacity
+        style={{
+          alignSelf: "flex-end",
+          flex: 1,
         }}
-        colorIconEmail={"red"}
-        colorIconPassword={"blue"}
-        textConnexion={"Je me connect"}
-        connexionTitleStyle={{ color: "blue" }}
-        connexionButtonStyle={{ backgroundColor: "red" }}
-        leftIconPassword={
-          <Icon name="ios-lock-open-outline" size={20} color={Colors.bgApp2} />
-        }
-        leftIconEmail={
-          <Icon name="mail-outline" size={20} color={Colors.color2} />
-        }
-        textRedirectRegisterStyle={{ color: "red" }}
-        styles={{}}
-      />
+        onPress={pressRedirectRegister}
+      >
+        <Text
+          style={{
+            color: Colors.bgApp,
+            textAlign: "center",
+            fontSize: 14,
+            ...textRedirectRegisterStyle,
+          }}
+        >
+          {textRedirectRegister}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -69,5 +172,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  title: {
+    marginVertical: 30,
+    fontWeight: "bold",
+    color: "#454545",
+    fontSize: 36,
+    textAlign: "center",
   },
 });

@@ -30,7 +30,7 @@ yarn add volkeno-react-native-login
 **First step:** import the component:
 
 ```javascript
-import LoginVolkeno from "volkeno-react-native-login";
+import Login from "volkeno-react-native-login";
 ```
 
 **Second step:** Use the login

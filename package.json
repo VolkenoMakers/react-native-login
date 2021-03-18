@@ -1,6 +1,6 @@
 {
   "name": "volkeno-react-native-login",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a custum login component",
   "main": "index.js",
   "scripts": {
